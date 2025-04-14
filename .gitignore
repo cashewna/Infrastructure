@@ -1,4 +1,4 @@
 *.env
 *.tfvars
 .terraform/
-.tfstate
+*.tfstate
