@@ -35,4 +35,5 @@ resource "oci_core_instance" "ubuntu_arm_instance" {
   }
 
   preserve_boot_volume = false
+  preserve_data_volumes_created_at_launch = false
 }
