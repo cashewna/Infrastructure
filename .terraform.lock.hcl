@@ -3,9 +3,22 @@
 
 provider "registry.opentofu.org/oracle/oci" {
   version     = "6.34.0"
-  constraints = ">= 6.34.0"
+  constraints = "~> 6.34"
   hashes = [
+    "h1:2fQFT9IEFY95Wn84OR9X2ychbJu3Bk3GCbH7yXZhBRk=",
+    "h1:3sb/qTpdJrnhYI+SLU494rIbi7fseEBUPBO7CWWNzDE=",
     "h1:42FrfU+zkXdBL8dEhRg6sAbrB4H14SKfNRm4jWVxtgY=",
+    "h1:4yJezsb3r0fBRbiuPW0mT0BdQDiaDrLp7+dMHHKsGyE=",
+    "h1:I6uW4H5d/qFjvbyITg4TRCdSAO2WDsnOSVmACeFstcU=",
+    "h1:Sop7IJax20NblsutyIKhmUYmcsTmzleGJ3uaenfqJQU=",
+    "h1:V7eFCyeuYrdme7d4Ac5ip/qxvW29QFbiUKnoG7DzUC0=",
+    "h1:YMuW67zcnZvm5aN4/tM7hpXWjgJclDkxJ889Y2n4qxE=",
+    "h1:YxkHkgcpaKbdigrMKeczRoX5OiD+Df+wDatKOEfUm+0=",
+    "h1:anvmdNDWmnBitVNIMUXBatnWcGY0uxjAHf6Y05lkwEg=",
+    "h1:dpONTofvoInQCVDpaEXdvUPQQCxEOpmwW1YYKhsHs7g=",
+    "h1:hMyJuMu6qTPnvf/3IoFc3luEX28UX9RGC7v2fH4+EpY=",
+    "h1:ln+SnNKxQF51WSFE9TcqIxsCr9SnhlXiQ2IFWCR0BtI=",
+    "h1:xkuZu1fgaRFs/g00BqHrT6+AYeInUAIgPvpKC3M/8tw=",
     "zh:224a579fd61250f2f9cfd0805fa31154da222425dd9b98bf43b6a56acf78f6b7",
     "zh:4478189a6241655406d5838b044e7e9783865fa6c17f429310e7a0e9d74876a4",
     "zh:689d25ee9baa5f231329426ff6e813dd6f4999d98bbb105e12b01f4299ce9816",
