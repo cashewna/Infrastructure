@@ -5,8 +5,12 @@ fingerprint = "aa:bb:cc:dd:..."
 region = "ap-sydney-1"
 subnet = "ocid1.subnet.oc1.ap-sydney-1..aaaa..."
 
-# Optional: place the instance in an existing compartment. When left null, the
-# "OpenTofu" compartment created by this configuration is used.
-# compartment = "ocid1.compartment.oc1..aaaa..."
+# Existing compartment. Set create_compartment = true only for a fresh tenancy.
+compartment        = "ocid1.compartment.oc1..aaaa..."
+create_compartment = false
 
 ssh_public_key = "ssh-ed25519 AAAA... you@example"
+
+# Budget alerts (AUD). Governance resources need tenancy-admin rights.
+alert_email      = "you@example.com"
+budget_amount_aud = 1

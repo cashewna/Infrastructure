@@ -9,7 +9,9 @@ server using OpenTofu. Everything here fits inside the OCI Always Free tier.
 - A **200 GB boot volume** with an Ubuntu 24.04 Arm image selected at plan time
 - A compartment named `OpenTofu` (pass `compartment` to place the instance in an
   existing one instead; the created compartment still exists)
-- A public IP on the supplied subnet
+- A public IP on the supplied subnet, with an NSG allowing SSH and Minecraft
+- A tenancy quota that hard-caps Arm compute, memory, block storage, and backups
+- Budget alerts so any spend above zero is visible
 
 It does not create networking (VCN, subnet, security lists). Pass the OCID of an
 existing public subnet, or add those resources here.
@@ -41,6 +43,20 @@ Avoid the idle reclamation policy: Oracle may reclaim an A1 instance when, over
 7 days, the 95th percentile CPU, network and memory utilisation all stay below
 20%. A server that actually does something is fine; a box that only idles may
 not be.
+
+## Governance
+
+`governance.tf` applies two controls that are independent of this configuration:
+
+- `oci_limits_quota.always_free` zeroes every compute family, then allows only
+  2 A1 OCPUs, 12 GB of A1 memory, 200 GB of block storage, and 5 backups. This
+  is a provisioning-time hard stop: a leaked admin key or a mistaken plan cannot
+  create billable compute or storage. It also blocks the two AMD micro shapes.
+- `oci_budget_budget.always_free` with alert rules at 50% and 100% of
+  `budget_amount_aud` (default AUD 1). Budgets notify; the quota enforces.
+
+Quotas take up to 10 minutes to become active. They are tenancy-wide and require
+tenancy-admin rights, so do not run this part with a compartment-scoped operator.
 
 ## Auditing storage
 

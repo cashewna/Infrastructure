@@ -16,7 +16,7 @@ variable "fingerprint" {
 variable "private_key_path" {
   description = "Path to the API signing private key."
   type        = string
-  default     = "~/.oci/rsa.pem"
+  default     = "~/.oci/oci_api_key.pem"
 }
 
 variable "region" {
@@ -26,9 +26,15 @@ variable "region" {
 }
 
 variable "compartment" {
-  description = "The OCID of an existing compartment. Null uses the compartment created by this configuration."
+  description = "The OCID of an existing compartment. Null uses the compartment created by this configuration, or the tenancy."
   type        = string
   default     = null
+}
+
+variable "create_compartment" {
+  description = "Create the OpenTofu compartment. Set false when it already exists and is passed in `compartment`."
+  type        = bool
+  default     = false
 }
 
 variable "subnet" {
@@ -96,4 +102,15 @@ variable "ubuntu_version" {
   description = "Canonical Ubuntu release used to select the platform image."
   type        = string
   default     = "24.04"
+}
+
+variable "alert_email" {
+  description = "Address that receives budget alerts."
+  type        = string
+}
+
+variable "budget_amount_aud" {
+  description = "Monthly budget in the tenancy's currency. Any spend above zero is worth an alert."
+  type        = number
+  default     = 1
 }

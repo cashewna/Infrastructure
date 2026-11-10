@@ -27,14 +27,16 @@ resource "oci_core_instance" "ubuntu_arm_instance" {
   create_vnic_details {
     assign_public_ip = true
     subnet_id        = var.subnet
+    nsg_ids          = [oci_core_network_security_group.bee.id]
   }
 
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
   }
 
-  # The boot volume is the only copy of the server's data. Keep it when the
-  # instance is replaced or destroyed; reattaching it is a manual step.
+  # The boot volume holds the Minecraft world. The quota below prevents a
+  # replacement from silently creating a second 200 GB volume: apply fails
+  # until the preserved volume is deleted.
   preserve_boot_volume                    = true
   preserve_data_volumes_created_at_launch = true
 
